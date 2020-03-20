@@ -1,0 +1,64 @@
+﻿@model UserRegistrationMVC5.Models.User
+@{
+    ViewBag.Title = "Input Details:";
+}
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("AddNewUser", "Users", null, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <fieldset>
+        <div class="editor-label">
+            @Html.Label("First Name:", new { @class="label_width"})
+            @Html.EditorFor(model => model.FirstName)
+        </div>
+        <div class="editor-label">
+            @Html.Label("Second Name:", new { @class="label_width"})
+            @Html.EditorFor(model => model.LastName)
+        </div>
+        <div class="editor-label">
+            @Html.Label("Email:", new { @class="label_width"})
+            @Html.EditorFor(model => model.email)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.birth_date,"Birth Date:", new { @class = "label_width control-label" })
+            @Html.EditorFor(model => model.birth_date, new { id = "birth_date", @placeholder = "Enter Date", @class="form-control datepicker" })
+        </div>
+        <div class="editor-label">
+            @Html.Label("Address:", new { @class="label_width"})
+            @Html.EditorFor(model => model.address)
+        </div>
+        <div>
+            <button type="submit" class="add_user_button">Add New User</button>
+        </div>
+    </fieldset>
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css" rel="stylesheet">
+<script>
+    var jq = jQuery.noConflict();
+    jq(document).ready(function () {
+        jq('#birth_date').datepicker({
+         dateFormat: 'dd-M-yy' 
+         });
+    });
+</script>
+<style>
+    .label_width {
+        width: 250px;
+    }
+
+    .add_user_button {
+        width: 150px;
+        text-align: center;
+        color:white;
+        Background:black;
+        position: absolute;
+    }
+
+    .datepicker{
+        background: #fff url(https://s1.postimg.org/x4vak6vr3/date_Picker.gif) no-repeat right;
+    }
+</style>

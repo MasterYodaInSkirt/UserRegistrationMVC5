@@ -1,0 +1,116 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    ViewBag.Title = "User Page";
+}
+
+@{
+    <div>
+        <h1>Existing users</h1>
+        <table>
+            <tr>
+                <th>
+
+                    Id
+
+                </th>
+
+                <th>
+
+                    Name
+
+                </th>
+
+                <th>
+
+                    Surname
+
+                </th>
+
+                <th>
+
+                    Email
+
+                </th>
+                <th class="addressWidth">
+
+                    Address
+
+                </th>
+                <th>
+
+                    Date Of Birth
+
+                </th>
+            </tr>
+            @{ foreach (var item in Model)
+                {
+                    <tr>
+                        <th>
+                            @item.Id
+                        </th>
+                        <th>
+
+                            @item.FirstName
+
+                        </th>
+                        <th>
+
+                            @item.LastName
+
+                        </th>
+                        <th>
+
+                            @item.email
+
+                        </th>
+                        <th class="addressWidth">
+
+                            @item.address
+
+                        </th>
+                        <th>
+
+                            @item.birth_date
+
+                        </th>
+                        <th>
+                            @Html.ActionLink("Delete", "Delete", new { id = @item.Id })
+                        </th>
+                        <th>
+                            @Html.ActionLink("Edit", "GetUser", new { id = @item.Id })
+                        </th>
+                    </tr>
+                }
+            }
+
+        </table>
+    </div>
+}
+<style type="text/css">
+    th {
+        width: 100px;
+    }
+
+    .addressWidth {
+        padding-left: 50px;
+        width: 250px;
+    }
+
+    h1 {
+        padding-bottom: 50px;
+    }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css" rel="stylesheet">
+
+
+
+
+
