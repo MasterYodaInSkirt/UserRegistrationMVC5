@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using RabbitMQ.Client;
+using System.Text;
 using System.Web.Mvc;
 using UserRegistrationMVC5.Models;
 using UserRegistrationMVC5.Repository;
@@ -71,6 +69,7 @@ namespace UserRegistrationMVC5.Controllers
                 int result = _userRepository.AddUser(model);
                 if(result > 0)
                 {
+                    SendRabbitMQMessage(model);
                     return RedirectToAction("Index", "Users");
                 }
                 else
@@ -91,6 +90,29 @@ namespace UserRegistrationMVC5.Controllers
 
             _userRepository.DeleteUser(id);
             return RedirectToAction("Index", "Users");
+        }
+
+        public void SendRabbitMQMessage(User model)
+        {
+            var factory = new ConnectionFactory() { HostName = "localhost" };
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
+            {
+                channel.QueueDeclare(queue: "users",
+                                     durable: false,
+                                     exclusive: false,
+                                     autoDelete: false,
+                                     arguments: null);
+
+                string message = "User " + model.FirstName + " " + model.LastName + ", " + "<br>"  +"email: " + model.email + " is registred.";
+                var body = Encoding.UTF8.GetBytes(message);
+
+                channel.BasicPublish(exchange: "",
+                                     routingKey: "users",
+                                     basicProperties: null,
+                                     body: body);
+            }
+
         }
     }
 }
