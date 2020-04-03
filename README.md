@@ -5,3 +5,4 @@
 3. Used SendGrid(cloud-based delivery platform) for email sending.
 4. Used RabbitMQ(messaging broker) for sharing messages during CRUID operations.
 5. Used Docker for RabbitMQ container.
+6. Used NUnit for writing unit tests.
