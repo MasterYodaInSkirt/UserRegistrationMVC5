@@ -104,4 +104,3 @@ C:\Users\miloj\Desktop\code\UserRegistrationMVC5\UserRegistrationMVC5\UserRegist
 C:\Users\miloj\Desktop\code\UserRegistrationMVC5\UserRegistrationMVC5\UserRegistrationMVC5\obj\Debug\UserRegistrationMVC5.csproj.CopyComplete
 C:\Users\miloj\Desktop\code\UserRegistrationMVC5\UserRegistrationMVC5\UserRegistrationMVC5\obj\Debug\UserRegistrationMVC5.dll
 C:\Users\miloj\Desktop\code\UserRegistrationMVC5\UserRegistrationMVC5\UserRegistrationMVC5\obj\Debug\UserRegistrationMVC5.pdb
-C:\Users\miloj\Desktop\code\UserRegistrationMVC5\UserRegistrationMVC5\UserRegistrationMVC5\obj\Debug\UserRegistrationMVC5.csprojAssemblyReference.cache
