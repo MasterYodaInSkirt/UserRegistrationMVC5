@@ -3,6 +3,7 @@ using RabbitMQ.Client.Events;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using System;
+using System.Configuration;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -48,11 +49,12 @@ namespace RabbitMQ
 
         static async Task SendEmail(string message)
         {
+           
             var apiKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY", EnvironmentVariableTarget.User);
             var client = new SendGridClient(apiKey);
-            var from = new EmailAddress("functional_account@gmaol.com", "New User");
+            var from = new EmailAddress("functional_account@gmail.com", "New User");
             var subject = "New User Registration";
-            var to = new EmailAddress("marijana.z.markov@gmail.com", "Admin");
+            var to = new EmailAddress(ConfigurationManager.AppSettings.Get("emailAdmin"), "Admin");
             var plainTextContent = message;
             var htmlContent = "<strong>"+message+"</strong>";
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
