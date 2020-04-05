@@ -9,6 +9,6 @@
 
 
 
-# Start app:
-1. Start RabbitMQ and UserRegistrationMVC5 app in the same time, and RabbitMQ
+# Start app (dependencies):
+1. Start RabbitMQ and UserRegistrationMVC5 app in the same time, and RabbitMQ service should be running
 
