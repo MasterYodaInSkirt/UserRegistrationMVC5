@@ -11,4 +11,6 @@
 
 # Start app (dependencies):
 1. Start RabbitMQ and UserRegistrationMVC5 app in the same time, and RabbitMQ service should be running
+2. Change email reciver in app.config of RabbitMQ app
+3. The email will be send on registration of a new user
 
